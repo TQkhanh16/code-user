@@ -21,6 +21,8 @@ urlpatterns = [
     path('api/', include(
         [
             path('', include('user.urls')),
+            path('', include('leaveRequest.urls')),
         ]
     ))
+    
 ]
