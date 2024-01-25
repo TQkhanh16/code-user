@@ -21,23 +21,23 @@ class ListCreateUserView(ListCreateAPIView):
         return JsonResponse({
             'message': 'Create a new User unsuccessful!'
         }, status=status.HTTP_400_BAD_REQUEST)
-# class UpdateDeleteCarView(RetrieveUpdateDestroyAPIView):
-    # model = Car
-    # serializer_class = CarSerializer
-    # def put(self, request, *args, **kwargs):
-    #     car = get_object_or_404(Car, id=kwargs.get('pk'))
-    #     serializer = CarSerializer(post, data=request.data)
-    #     if serializer.is_valid():
-    #         serializer.save()
-    #         return JsonResponse({
-    #             'message': 'Update Car successful!'
-    #         }, status=status.HTTP_200_OK)
-    #     return JsonResponse({
-    #         'message': 'Update Car unsuccessful!'
-    #     }, status=status.HTTP_400_BAD_REQUEST)
-    # def delete(self, request, *args, **kwargs):
-    #     car = get_object_or_404(Car, id=kwargs.get('pk'))
-    #     car.delete()
-    #     return JsonResponse({
-    #         'message': 'Delete Car successful!'
-    #     }, status=status.HTTP_200_OK)
+class UpdateDeleteUserView(RetrieveUpdateDestroyAPIView):
+    model = User
+    serializer_class = UserSerializer
+    def put(self, request, *args, **kwargs):
+        User = get_object_or_404(User, id=kwargs.get('pk'))
+        serializer = UserSerializer(post, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse({
+                'message': 'Update User successful!'
+            }, status=status.HTTP_200_OK)
+        return JsonResponse({
+            'message': 'Update User unsuccessful!'
+        }, status=status.HTTP_400_BAD_REQUEST)
+    def delete(self, request, *args, **kwargs):
+        user = get_object_or_404(User, id=kwargs.get('pk'))
+        user.delete()
+        return JsonResponse({
+            'message': 'Delete User successful!'
+        }, status=status.HTTP_200_OK)
